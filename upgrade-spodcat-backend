@@ -1,0 +1,6 @@
+#!/usr/bin/env bash
+
+poetry update spodcat-backend
+git add .
+git commit -m "Upgraded spodcat-backend"
+git push
