@@ -135,7 +135,7 @@ LANGUAGES = [
 STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_DIRS = []
-MEDIA_ROOT = BASE_DIR / "media"
+MEDIA_ROOT = os.environ.get("MEDIA_ROOT", BASE_DIR / "media")
 
 AZURE_ACCOUNT_NAME = os.environ.get("AZURE_ACCOUNT_NAME", "musikensmakt")
 AZURE_ACCOUNT_KEY = os.environ.get("AZURE_FILES_KEY")
@@ -150,8 +150,9 @@ AZURE_CLIENT_SECRET = os.environ.get("AZURE_CLIENT_SECRET")
 STORAGES = {
     "default": {"BACKEND": "storages.backends.azure_storage.AzureStorage"},
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
+    "local": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
 }
-MEDIA_URL = f"https://musikensmakt.blob.core.windows.net/{AZURE_CONTAINER}/{ENVIRONMENT}/"
+MEDIA_URL = "/media/"
 
 
 # Default primary key field type
@@ -286,4 +287,7 @@ REST_FRAMEWORK = {
 SPODCAT = {
     "FRONTEND_ROOT_URL": os.environ.get("FRONTEND_ROOT_URL"),
     "ROOT_URL": os.environ.get("ROOT_URL"),
+    "FILEFIELDS": {
+        "FONTFACE_FILE": {"STORAGE": "local"},
+    },
 }

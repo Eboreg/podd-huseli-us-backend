@@ -2451,7 +2451,7 @@ files = [
 
 [[package]]
 name = "spodcat-backend"
-version = "0.3.6"
+version = "0.3.14"
 description = ""
 optional = false
 python-versions = ">=3.10"
