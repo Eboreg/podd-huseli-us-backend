@@ -1,8 +1,10 @@
 #!/usr/bin/env bash
 
 set -e
+# shellcheck disable=SC1091
 . .venv/bin/activate
 git pull
+poetry sync
 m migrate
 m collectstatic --noinput
 sudo systemctl restart emperor.uwsgi.service
