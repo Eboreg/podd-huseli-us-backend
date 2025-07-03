@@ -58,8 +58,8 @@ try:
     # pylint: disable=unused-import
     import debug_toolbar
 
-    # INSTALLED_APPS.append("debug_toolbar")
-    # MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
+    INSTALLED_APPS.append("debug_toolbar")
+    MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
 except ImportError:
     pass
 
@@ -73,6 +73,7 @@ TEMPLATES = [
         "DIRS": [SRC_DIR / "templates"],
         "APP_DIRS": True,
         "OPTIONS": {
+            "debug": DEBUG,
             "context_processors": [
                 "django.template.context_processors.debug",
                 "django.template.context_processors.request",
