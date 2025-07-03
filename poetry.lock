@@ -2479,8 +2479,10 @@ python-slugify = "*"
 dev = ["django-debug-toolbar", "django-extensions", "flake8", "ipdb", "ipython", "isort", "pylint", "pylint-django", "types-markdown", "types-requests"]
 
 [package.source]
-type = "directory"
-url = "../../spodcat-backend"
+type = "git"
+url = "https://github.com/Eboreg/spodcat-backend"
+reference = "package"
+resolved_reference = "e421da7bca42b19d648d8843f3e67b99b9a0e74e"
 
 [[package]]
 name = "sqlparse"
@@ -2763,4 +2765,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "ea8a8ed07030c81b795f8e4de8fd670dd8dfa68895b52a69a97b001670c61693"
+content-hash = "12a46de6d141a46cdd3ada8d2206e405574bcd8c60d95115589e681e32608199"
