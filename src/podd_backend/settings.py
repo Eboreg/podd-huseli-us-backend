@@ -217,10 +217,10 @@ LOGGING = {
 CORS_ALLOWED_ORIGINS = [
     "http://localhost:8000",
     "http://127.0.0.1:8000",
-    "https://backend.musikensmakt.huseli.us",
-    "https://musikensmakt.huseli.us",
     "https://backend.podd.huseli.us",
     "https://podd.huseli.us",
+    "https://backend.testpodd.huseli.us",
+    "https://testpodd.huseli.us",
 ]
 
 
