@@ -2451,7 +2451,7 @@ files = [
 
 [[package]]
 name = "spodcat-backend"
-version = "0.3.17"
+version = "0.3.18"
 description = ""
 optional = false
 python-versions = ">=3.10"
@@ -2482,7 +2482,7 @@ dev = ["django-debug-toolbar", "django-extensions", "flake8", "ipdb", "ipython",
 type = "git"
 url = "https://github.com/Eboreg/spodcat-backend"
 reference = "package"
-resolved_reference = "29b85f89307d14c4adb71e66a7ea667b1f8c5794"
+resolved_reference = "2b0f69cd4de17e4b349cad3ac973e1cbb7b975d0"
 
 [[package]]
 name = "sqlparse"
