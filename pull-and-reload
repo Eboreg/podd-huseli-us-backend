@@ -7,4 +7,5 @@ git pull
 poetry sync
 m migrate
 m collectstatic --noinput
+m invalidate_cachalot
 sudo systemctl restart emperor.uwsgi.service
