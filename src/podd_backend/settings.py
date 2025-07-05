@@ -4,15 +4,11 @@ from pathlib import Path
 from django.http import HttpRequest
 from django.utils.translation import gettext_lazy as _
 
-
-def env_boolean(key: str, default: bool = False):
-    if key in os.environ:
-        return os.environ[key].lower() not in ("false", "no", "0")
-    return default
+from spodcat.utils import env_boolean
 
 
-SRC_DIR = Path(__file__).resolve().parent
-BASE_DIR = SRC_DIR.parent.parent
+SRC_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = SRC_DIR.parent
 SECRET_KEY = os.environ.get("DJANGO_SECRET_KEY")
 DEBUG = env_boolean("DEBUG")
 ALLOWED_HOSTS = os.environ.get("ALLOWED_HOSTS", ".localhost,127.0.0.1,[::1]").split(",")
@@ -84,7 +80,7 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = f"{SRC_DIR.name}.wsgi.application"
+WSGI_APPLICATION = "podd_backend.wsgi.application"
 
 
 # Database
@@ -137,6 +133,7 @@ STATIC_URL = "static/"
 STATIC_ROOT = BASE_DIR / "static"
 STATICFILES_DIRS = []
 MEDIA_ROOT = os.environ.get("MEDIA_ROOT", BASE_DIR / "media")
+MEDIA_URL = "/media/"
 
 AZURE_ACCOUNT_NAME = os.environ.get("AZURE_ACCOUNT_NAME", "musikensmakt")
 AZURE_ACCOUNT_KEY = os.environ.get("AZURE_FILES_KEY")
@@ -153,7 +150,6 @@ STORAGES = {
     "staticfiles": {"BACKEND": "whitenoise.storage.CompressedManifestStaticFilesStorage"},
     "local": {"BACKEND": "django.core.files.storage.FileSystemStorage"},
 }
-MEDIA_URL = "/media/"
 
 
 # Default primary key field type
@@ -225,6 +221,22 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
+# Caching
+redis_db = os.environ.get("REDIS_DB", "0")
+
+CACHES = {
+    "default": {
+        "BACKEND": "django_redis.cache.RedisCache",
+        "LOCATION": f"redis://127.0.0.1:6379/{redis_db}",
+        "OPTIONS": {
+            "CLIENT_CLASS": "django_redis.client.DefaultClient",
+        },
+    },
+}
+CACHALOT_DATABASES = ["default"]
+CACHALOT_ENABLED = env_boolean("CACHALOT_ENABLED", True)
+
+
 # django-debug-toolbar
 def show_toolbar(request: HttpRequest):
     from django.conf import settings
@@ -249,35 +261,21 @@ DEBUG_TOOLBAR_PANELS = [
     "debug_toolbar.panels.templates.TemplatesPanel",
     "debug_toolbar.panels.alerts.AlertsPanel",
     "debug_toolbar.panels.cache.CachePanel",
-    "cachalot.panels.CachalotPanel",
     "debug_toolbar.panels.signals.SignalsPanel",
     "debug_toolbar.panels.redirects.RedirectsPanel",
     "debug_toolbar.panels.profiling.ProfilingPanel",
 ]
+
+if CACHALOT_ENABLED:
+    DEBUG_TOOLBAR_PANELS.append("cachalot.panels.CachalotPanel")
 
 
 # martor
 MARTOR_ENABLE_LABEL = True
 
 
-# Caching
-redis_db = os.environ.get("REDIS_DB", "0")
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": f"redis://127.0.0.1:6379/{redis_db}",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        },
-    },
-}
-CACHALOT_DATABASES = ["default"]
-
-
 # Django REST Framework
 REST_FRAMEWORK = {
-    "DEFAULT_AUTHENTICATION_CLASSES": [],
     "TEST_REQUEST_RENDERER_CLASSES": (
         "rest_framework_json_api.renderers.JSONRenderer",
     ),
