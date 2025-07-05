@@ -29,10 +29,6 @@ dynamic = ["dependencies"]
 [tool.poetry]
 package-mode = false
 
-[tool.poetry.extras]
-# dev = ["flake8", "ipdb", "ipython", "isort", "pylint", "pylint-django", "django-debug-toolbar"]
-dev = []
-
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.3.0"
 ipdb = "^0.13.13"
@@ -56,10 +52,7 @@ psycopg = { version = ">=3.2.9,<4.0.0", extras = ["binary"] }
 python-dotenv = { version = ">=1.1.0,<2.0.0" }
 redis = { version = ">=6.2.0,<7.0.0" }
 whitenoise = { version = ">=6.9.0,<7.0.0" }
-spodcat-backend = [
-    { git = "https://github.com/Eboreg/spodcat-backend", markers = "extra != 'dev'" },
-    { develop = true, path = "/home/klaatu/kod/spodcat/backend/", markers = "extra == 'dev'" }
-]
+spodcat-backend = { git = "https://github.com/Eboreg/spodcat-backend" }
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]
