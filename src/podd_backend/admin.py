@@ -7,7 +7,7 @@ from podd_backend.models import User
 
 
 @admin.register(User)
-class UserAdmin(AdminMixin, DjangoUserAdmin):
+class UserAdmin(AdminMixin, DjangoUserAdmin): # type: ignore
     fieldsets = (
         (None, {"fields": ("username", "password")}),
         (_("Personal info"), {"fields": ("first_name", "last_name", "email", "language")}),

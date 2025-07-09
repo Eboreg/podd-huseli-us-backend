@@ -3,7 +3,6 @@ from pathlib import Path
 
 from django.http import HttpRequest
 from django.utils.translation import gettext_lazy as _
-
 from spodcat.utils import env_boolean
 
 
@@ -285,7 +284,7 @@ REST_FRAMEWORK = {
 
 SPODCAT = {
     "FRONTEND_ROOT_URL": os.environ.get("FRONTEND_ROOT_URL"),
-    "ROOT_URL": os.environ.get("ROOT_URL"),
+    "BACKEND_HOST": os.environ.get("BACKEND_HOST"),
     "FILEFIELDS": {
         "FONTFACE_FILE": {"STORAGE": "local"},
     },

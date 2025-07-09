@@ -540,6 +540,18 @@ files = [
 ]
 
 [[package]]
+name = "country-list"
+version = "1.1.0"
+description = "List of all countries with names and ISO 3166-1 codes in all languages"
+optional = false
+python-versions = ">=3.8,<4.0"
+groups = ["main"]
+files = [
+    {file = "country_list-1.1.0-py3-none-any.whl", hash = "sha256:6d95034704ad622d0d7391dbe3d63d571ef739817646d43f845c7256fb562fc3"},
+    {file = "country_list-1.1.0.tar.gz", hash = "sha256:2357db0e311f3f3f9923956e2fcbca88b1ec10beb2ff33579a0cc4548f95cfb4"},
+]
+
+[[package]]
 name = "cryptography"
 version = "45.0.5"
 description = "cryptography is a package which provides cryptographic recipes and primitives to Python developers."
@@ -2452,7 +2464,7 @@ files = [
 
 [[package]]
 name = "spodcat-backend"
-version = "0.3.19"
+version = "0.4.0"
 description = ""
 optional = false
 python-versions = ">=3.10"
@@ -2461,6 +2473,7 @@ files = []
 develop = false
 
 [package.dependencies]
+country_list = "*"
 django = "*"
 django-polymorphic = "*"
 djangorestframework = "*"
@@ -2474,16 +2487,17 @@ markdownify = "*"
 martor = "*"
 pillow = "*"
 pydub = "*"
+python-dateutil = "*"
 python-slugify = "*"
 
 [package.extras]
-dev = ["django-debug-toolbar", "django-extensions", "django-storages[azure]", "flake8", "ipdb", "ipython", "isort", "psycopg[binary]", "pylint", "pylint-django", "python-dotenv", "types-markdown", "types-requests", "whitenoise"]
+dev = ["django-debug-toolbar", "django-extensions", "django-storages[azure]", "django-stubs", "djangorestframework-stubs", "flake8", "ipdb", "ipython", "isort", "psycopg[binary]", "pylint", "pylint-django", "python-dotenv", "types-markdown", "types-requests", "whitenoise"]
 
 [package.source]
 type = "git"
 url = "https://github.com/Eboreg/spodcat-backend"
 reference = "HEAD"
-resolved_reference = "cf46df42c5d7ec9868786d1220856799c8688101"
+resolved_reference = "fff08f4a83c471ca68faa7362eb440da769f3685"
 
 [[package]]
 name = "sqlparse"
