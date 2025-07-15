@@ -1,6 +1,6 @@
 [project]
 name = "podd-backend"
-version = "0.2.0"
+version = "0.2.1"
 description = ""
 authors = [
     {name = "Robert Huselius",email = "robert@huseli.us"}
@@ -8,23 +8,22 @@ authors = [
 license = {text = "GPL-3.0-or-later"}
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
-# dependencies = [
-#     "azure-identity (>=1.23.0,<2.0.0)",
-#     "azure-monitor-query (>=1.4.1,<2.0.0)",
-#     "django (>=5.2.3,<6.0.0)",
-#     "django-cachalot (>=2.8.0,<3.0.0)",
-#     "django-cors-headers (>=4.7.0,<5.0.0)",
-#     "django-extensions (>=4.1,<5.0)",
-#     "django-redis (>=6.0.0,<7.0.0)",
-#     "django-storages[azure] (>=1.14.6,<2.0.0)",
-#     "hiredis (>=3.2.1,<4.0.0)",
-#     "psycopg[binary] (>=3.2.9,<4.0.0)",
-#     "python-dotenv (>=1.1.0,<2.0.0)",
-#     "redis (>=6.2.0,<7.0.0)",
-#     "whitenoise (>=6.9.0,<7.0.0)",
-#     "spodcat-backend @ git+https://github.com/Eboreg/spodcat-backend",
-# ]
-dynamic = ["dependencies"]
+dependencies = [
+    "azure-identity (>=1.23.0,<2.0.0)",
+    "azure-monitor-query (>=1.4.1,<2.0.0)",
+    "django (>=5.2.3,<6.0.0)",
+    "django-cachalot (>=2.8.0,<3.0.0)",
+    "django-cors-headers (>=4.7.0,<5.0.0)",
+    "django-extensions (>=4.1,<5.0)",
+    "django-redis (>=6.0.0,<7.0.0)",
+    "django-storages[azure] (>=1.14.6,<2.0.0)",
+    "hiredis (>=3.2.1,<4.0.0)",
+    "psycopg[binary] (>=3.2.9,<4.0.0)",
+    "python-dotenv (>=1.1.0,<2.0.0)",
+    "redis (>=6.2.0,<7.0.0)",
+    "whitenoise (>=6.9.0,<7.0.0)",
+    "spodcat-backend @ git+https://github.com/Eboreg/spodcat-backend",
+]
 
 [tool.poetry]
 package-mode = false
@@ -37,22 +36,6 @@ isort = "^6.0.1"
 pylint = "^3.3.7"
 pylint-django = "^2.6.1"
 django-debug-toolbar = "^5.2.0"
-
-[tool.poetry.dependencies]
-azure-identity = { version = ">=1.23.0,<2.0.0" }
-azure-monitor-query = { version = ">=1.4.1,<2.0.0" }
-django = { version = ">=5.2.3,<6.0.0" }
-django-cachalot = { version = ">=2.8.0,<3.0.0" }
-django-cors-headers = { version = ">=4.7.0,<5.0.0" }
-django-extensions = { version = ">=4.1,<5.0" }
-django-redis = { version = ">=6.0.0,<7.0.0" }
-django-storages = { version = ">=1.14.6,<2.0.0", extras = ["azure"] }
-hiredis = { version = ">=3.2.1,<4.0.0" }
-psycopg = { version = ">=3.2.9,<4.0.0", extras = ["binary"] }
-python-dotenv = { version = ">=1.1.0,<2.0.0" }
-redis = { version = ">=6.2.0,<7.0.0" }
-whitenoise = { version = ">=6.9.0,<7.0.0" }
-spodcat-backend = { git = "https://github.com/Eboreg/spodcat-backend" }
 
 [build-system]
 requires = ["poetry-core>=2.0.0,<3.0.0"]

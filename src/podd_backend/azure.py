@@ -1,13 +1,19 @@
 import datetime
+from typing import TYPE_CHECKING, Generator
 
 from azure.identity import DefaultAzureCredential
 from azure.monitor.query import (
     LogsQueryClient,
     LogsQueryError,
     LogsQueryStatus,
+    LogsTableRow,
 )
 from django.conf import settings
 from django.utils import timezone
+
+
+if TYPE_CHECKING:
+    from spodcat.logs.models import PodcastEpisodeAudioRequestLog
 
 
 class GetAudioRequestLogError(Exception):
@@ -39,7 +45,7 @@ def get_audio_request_logs(
     to_date: datetime.datetime | None = None,
     from_inclusive: bool = True,
     to_inclusive: bool = True,
-):
+) -> "Generator[LogsTableRow]":
     try:
         environment = environment or settings.ENVIRONMENT
         credential = DefaultAzureCredential()
@@ -109,11 +115,11 @@ def create_audio_request_logs(
     environment: str | None = None,
     no_bots: bool = False,
     complete: bool = False,
-):
+) -> "Generator[PodcastEpisodeAudioRequestLog]":
     from spodcat.logs.models import PodcastEpisodeAudioRequestLog
     from spodcat.models import Episode
 
-    episodes = list(Episode.objects.filter(podcast__slug=podcast_slug))
+    episodes: list[Episode] = list(Episode.objects.filter(podcast__slug=podcast_slug))
     errors: list[GetAudioRequestLogError] = []
     from_date: datetime.datetime | None = None
 
