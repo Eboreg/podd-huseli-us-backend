@@ -2464,13 +2464,15 @@ files = [
 
 [[package]]
 name = "spodcat-backend"
-version = "0.6.3"
+version = "0.6.4"
 description = ""
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
-files = []
-develop = false
+files = [
+    {file = "spodcat_backend-0.6.4-py3-none-any.whl", hash = "sha256:267d42016de625100eb368bdd6c47d22629b00bc17eba2881338983fec0e35a1"},
+    {file = "spodcat_backend-0.6.4.tar.gz", hash = "sha256:79709b3a15ba534d35c28bc974b402d4c5bc4e3657c76d8aa4bf2e626edef75c"},
+]
 
 [package.dependencies]
 country_list = "*"
@@ -2482,7 +2484,7 @@ feedgen = "*"
 feedparser = "*"
 geoip2 = "*"
 iso639-lang = "*"
-klaatu-django = {url = "https://github.com/Eboreg/klaatu-django/archive/refs/heads/master.zip"}
+klaatu-django = "*"
 markdownify = "*"
 martor = "*"
 pillow = "*"
@@ -2492,12 +2494,6 @@ python-slugify = "*"
 
 [package.extras]
 dev = ["django-debug-toolbar", "django-extensions", "django-storages[azure]", "django-stubs", "djangorestframework-stubs", "flake8", "ipdb", "ipython", "isort", "psycopg[binary]", "pylint", "pylint-django", "python-dotenv", "types-markdown", "types-requests", "whitenoise"]
-
-[package.source]
-type = "git"
-url = "https://github.com/Eboreg/spodcat-backend"
-reference = "HEAD"
-resolved_reference = "982cd67bbfec2758f161d869734fa9b5f97a33c9"
 
 [[package]]
 name = "sqlparse"
@@ -2780,4 +2776,4 @@ propcache = ">=0.2.1"
 [metadata]
 lock-version = "2.1"
 python-versions = ">=3.11,<4.0"
-content-hash = "0ddc9a93d9232bc40a2f9972a648dc05503f468c90f240146c2fe682dcd7709a"
+content-hash = "eb91c633fbd848da4c8937e0348260fb815092fa5d201e336cb2a2cc1727e581"
