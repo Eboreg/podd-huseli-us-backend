@@ -1,6 +1,6 @@
 [project]
 name = "podd-backend"
-version = "0.2.4"
+version = "0.2.5"
 description = ""
 authors = [
     {name = "Robert Huselius",email = "robert@huseli.us"}
@@ -24,9 +24,6 @@ dependencies = [
     "whitenoise (>=6.9.0,<7.0.0)",
     "spodcat-backend",
 ]
-
-[tool.poetry]
-package-mode = false
 
 [tool.poetry.group.dev.dependencies]
 flake8 = "^7.3.0"
