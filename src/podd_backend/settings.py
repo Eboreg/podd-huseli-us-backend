@@ -35,6 +35,7 @@ INSTALLED_APPS = [
     "spodcat.logs",
     "spodcat.contrib.admin",
     "podd_backend",
+    "drf_spectacular",
 ]
 
 MIDDLEWARE = [
