@@ -234,6 +234,7 @@ CACHES = {
 }
 CACHALOT_DATABASES = ["default"]
 CACHALOT_ENABLED = env_boolean("CACHALOT_ENABLED", True)
+CACHALOT_UNCACHABLE_APPS = ["spodcat.logs"]
 
 
 # django-debug-toolbar

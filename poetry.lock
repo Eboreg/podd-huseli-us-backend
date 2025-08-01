@@ -2488,14 +2488,14 @@ files = [
 
 [[package]]
 name = "spodcat-backend"
-version = "0.6.6"
+version = "0.6.7"
 description = ""
 optional = false
 python-versions = ">=3.10"
 groups = ["main"]
 files = [
-    {file = "spodcat_backend-0.6.6-py3-none-any.whl", hash = "sha256:76388e1b7143157e6431974167f271dc730bbdd04e2092d7aa3c3e3499d85f44"},
-    {file = "spodcat_backend-0.6.6.tar.gz", hash = "sha256:c230bf6fb1cbb56d7d9cc473fa5884c9f29f3033f60a18f30e95acbf1dd17c7c"},
+    {file = "spodcat_backend-0.6.7-py3-none-any.whl", hash = "sha256:5a95da2ef61d030d9aa81a5745982bc4cbf2fd4c195be113efcfa5953a76ed57"},
+    {file = "spodcat_backend-0.6.7.tar.gz", hash = "sha256:5cb97846c755354cce4ce7effd3f57b9265c9ac36e103149cdb85943c17b18e2"},
 ]
 
 [package.dependencies]
