@@ -26,16 +26,26 @@ class GetAudioRequestLogError(Exception):
         super().__init__(message, podcast_slug, query_error)
         self.podcast_slug = podcast_slug
         self.query_error = query_error
+        self.error_list = []
 
         if isinstance(message, list):
-            self.error_list = []
+            self.message = None
             for m in message:
                 if not isinstance(m, GetAudioRequestLogError):
                     m = GetAudioRequestLogError(m, podcast_slug)
                 self.error_list.extend(m.error_list)
         else:
             self.message = message
-            self.error_list = [self]
+
+    def __str__(self) -> str:
+        args = [f"podcast_slug={self.podcast_slug}"]
+        if self.message:
+            args.append(f"message={self.message}")
+        if self.query_error:
+            args.append(f"query_error={self.query_error}")
+        if self.error_list:
+            args.append(f"error_list={self.error_list}")
+        return f"GetAudioRequestLogError({', '.join(args)})"
 
 
 def get_audio_request_logs(
@@ -91,7 +101,7 @@ def get_audio_request_logs(
 
         if response.status != LogsQueryStatus.SUCCESS:
             raise GetAudioRequestLogError(
-                "response.status != SUCCESS",
+                f"response.status = {response.status}",
                 podcast_slug=podcast_slug,
                 query_error=response.partial_error,
             )
