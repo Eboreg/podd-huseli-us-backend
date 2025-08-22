@@ -7,7 +7,7 @@ license = {text = "GPL-3.0-or-later"}
 name = "podd-backend"
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
-version = "0.3.1"
+version = "0.3.2"
 
 [tool.poetry.dependencies]
 azure-identity = ">=1.23.0,<2.0.0"
@@ -22,7 +22,7 @@ hiredis = ">=3.2.1,<4.0.0"
 psycopg = { version = ">=3.2.9,<4.0.0", extras = ["binary"] }
 python-dotenv = ">=1.1.0,<2.0.0"
 redis = ">=6.2.0,<7.0.0"
-spodcat-backend = { version = "*", allow-prereleases = true }
+spodcat-backend = { version = "*" }
 whitenoise = ">=6.9.0,<7.0.0"
 
 [tool.poetry.group.dev.dependencies]
@@ -33,6 +33,7 @@ ipython = "^9.3.0"
 isort = "^6.0.1"
 pylint = "^3.3.7"
 pylint-django = "^2.6.1"
+spodcat-backend = { git = "https://github.com/Eboreg/spodcat-backend.git", branch = "master" }
 
 [build-system]
 build-backend = "poetry.core.masonry.api"
