@@ -218,6 +218,7 @@ CORS_ALLOWED_ORIGINS = [
     "https://podd.huseli.us",
     "https://backend.testpodd.huseli.us",
     "https://testpodd.huseli.us",
+    "http://jacob:4200",
 ]
 
 
