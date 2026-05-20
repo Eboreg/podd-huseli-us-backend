@@ -1,7 +1,7 @@
 from django.core.management import BaseCommand
 from spodcat.models import Podcast
 
-from podd_backend.azure import create_audio_request_logs
+from podd_backend.azure_utils import create_audio_request_logs
 
 
 class Command(BaseCommand):
