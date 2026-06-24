@@ -4,7 +4,7 @@ set -e
 # shellcheck disable=SC1091
 . .venv/bin/activate
 git pull
-poetry sync
+uv sync
 m migrate
 m collectstatic --noinput
 m invalidate_cachalot

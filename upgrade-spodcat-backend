@@ -1,6 +1,5 @@
 #!/usr/bin/env bash
 
-poetry update spodcat-backend --no-cache --verbose
+uv lock --upgrade-package spodcat-backend --no-cache
 git add .
 git commit -m "Upgraded spodcat-backend"
-git push
