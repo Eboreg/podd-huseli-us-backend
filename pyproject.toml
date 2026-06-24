@@ -11,7 +11,7 @@ license = {text = "GPL-3.0-or-later"}
 name = "podd-backend"
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
-version = "0.4.0"
+version = "0.5.0"
 dependencies = [
     "azure-identity",
     "azure-monitor-query",
@@ -39,6 +39,7 @@ dev = [
     "pylint",
     "pylint-django",
     "spodcat-backend",
+    "werkzeug>=3.1.8",
 ]
 
 [project.scripts]
