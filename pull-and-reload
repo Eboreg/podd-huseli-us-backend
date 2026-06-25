@@ -4,8 +4,9 @@ set -e
 # shellcheck disable=SC1091
 . .venv/bin/activate
 git pull
+sudo chown -R pi:pi .venv/lib/python3.11/site-packages/*
 uv sync
 m migrate
-m collectstatic --noinput
-m invalidate_cachalot
+m collectstatic --noinput --clear
+# m invalidate_cachalot
 sudo systemctl restart emperor.uwsgi.service
