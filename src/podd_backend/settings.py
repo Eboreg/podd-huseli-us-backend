@@ -24,7 +24,6 @@ INSTALLED_APPS = [
     "django.contrib.sessions",  # needed for admin
     "django.contrib.messages",  # needed for admin
     "django.contrib.staticfiles",  # needed for admin and REST browsable API
-    "cachalot",
     "django_extensions",
     "rest_framework",  # needed for REST browsable API
     "rest_framework_json_api",  # needed for REST browsable API
@@ -222,20 +221,24 @@ CORS_ALLOWED_ORIGINS = [
 
 
 # Caching
-redis_db = os.environ.get("REDIS_DB", "0")
-
-CACHES = {
-    "default": {
-        "BACKEND": "django_redis.cache.RedisCache",
-        "LOCATION": f"redis://127.0.0.1:6379/{redis_db}",
-        "OPTIONS": {
-            "CLIENT_CLASS": "django_redis.client.DefaultClient",
-        },
-    },
-}
-CACHALOT_DATABASES = ["default"]
 CACHALOT_ENABLED = env_boolean("CACHALOT_ENABLED", True)
-CACHALOT_UNCACHABLE_APPS = ["spodcat.logs"]
+
+if CACHALOT_ENABLED:
+    redis_db = os.environ.get("REDIS_DB", "0")
+
+    INSTALLED_APPS.append("cachalot")
+
+    CACHES = {
+        "default": {
+            "BACKEND": "django_redis.cache.RedisCache",
+            "LOCATION": f"redis://127.0.0.1:6379/{redis_db}",
+            "OPTIONS": {
+                "CLIENT_CLASS": "django_redis.client.DefaultClient",
+            },
+        },
+    }
+    CACHALOT_DATABASES = ["default"]
+    CACHALOT_UNCACHABLE_APPS = ["spodcat.logs"]
 
 
 # django-debug-toolbar
