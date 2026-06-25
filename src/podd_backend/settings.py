@@ -21,16 +21,16 @@ ADMINS = [(os.environ.get("ADMIN_NAME", "Admin"), os.environ.get("ADMIN_EMAIL", 
 INSTALLED_APPS = [
     "django.contrib.auth",
     "django.contrib.contenttypes",
-    "django.contrib.sessions", # needed for admin
-    "django.contrib.messages", # needed for admin
-    "django.contrib.staticfiles", # needed for admin and REST browsable API
+    "django.contrib.sessions",  # needed for admin
+    "django.contrib.messages",  # needed for admin
+    "django.contrib.staticfiles",  # needed for admin and REST browsable API
     "cachalot",
     "django_extensions",
-    "rest_framework", # needed for REST browsable API
-    "rest_framework_json_api", # needed for REST browsable API
+    "rest_framework",  # needed for REST browsable API
+    "rest_framework_json_api",  # needed for REST browsable API
     "corsheaders",
-    "django_filters", # needed for REST browsable API
-    "martor", # needed for Episode, Podcast & Post admin
+    "django_filters",  # needed for REST browsable API
+    "martor",  # needed for Episode, Podcast & Post admin
     "spodcat",
     "spodcat.logs",
     "spodcat.contrib.admin",
@@ -51,8 +51,7 @@ MIDDLEWARE = [
 ]
 
 try:
-    # pylint: disable=unused-import
-    import debug_toolbar
+    import debug_toolbar  # noqa: F401
 
     INSTALLED_APPS.append("debug_toolbar")
     MIDDLEWARE.append("debug_toolbar.middleware.DebugToolbarMiddleware")
@@ -205,7 +204,7 @@ LOGGING = {
         "pydub.converter": {
             "handlers": ["console"],
             "level": "DEBUG",
-        }
+        },
     },
 }
 
@@ -278,9 +277,7 @@ MARTOR_ENABLE_LABEL = True
 
 # Django REST Framework
 REST_FRAMEWORK = {
-    "TEST_REQUEST_RENDERER_CLASSES": (
-        "rest_framework_json_api.renderers.JSONRenderer",
-    ),
+    "TEST_REQUEST_RENDERER_CLASSES": ("rest_framework_json_api.renderers.JSONRenderer",),
     "TEST_REQUEST_DEFAULT_FORMAT": "vnd.api+json",
 }
 
@@ -290,5 +287,6 @@ SPODCAT = {
     "BACKEND_HOST": os.environ.get("BACKEND_HOST"),
     "FILEFIELDS": {
         "FONTFACE_FILE": {"STORAGE": "local"},
+        "RSS_XML": {"STORAGE": "local"},
     },
 }

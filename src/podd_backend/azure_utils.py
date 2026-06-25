@@ -61,17 +61,19 @@ def get_audio_request_logs(
         credential = DefaultAzureCredential()
         client = LogsQueryClient(credential)
         from_date = from_date or datetime.datetime(1970, 1, 1, tzinfo=datetime.timezone.utc)
-        columns = ", ".join([
-            "TimeGenerated",
-            "StatusCode",
-            "DurationMs",
-            "CallerIpAddress",
-            "UserAgentHeader",
-            "ReferrerHeader",
-            "ObjectKey",
-            "ResponseBodySize",
-            "Uri",
-        ])
+        columns = ", ".join(
+            [
+                "TimeGenerated",
+                "StatusCode",
+                "DurationMs",
+                "CallerIpAddress",
+                "UserAgentHeader",
+                "ReferrerHeader",
+                "ObjectKey",
+                "ResponseBodySize",
+                "Uri",
+            ]
+        )
         where_list = [
             "OperationName == 'GetBlob'",
             f"ObjectKey contains '{environment}/{podcast_slug}/episodes'",
@@ -135,8 +137,7 @@ def create_audio_request_logs(
 
     if not complete:
         last_log = (
-            PodcastEpisodeAudioRequestLog.objects
-            .filter(episode__podcast__slug=podcast_slug)
+            PodcastEpisodeAudioRequestLog.objects.filter(episode__podcast__slug=podcast_slug)
             .order_by("-created")
             .first()
         )
@@ -151,10 +152,7 @@ def create_audio_request_logs(
             from_inclusive=False,
         ):
             try:
-                episode = [
-                    ep for ep in episodes
-                    if ep.audio_file and row["ObjectKey"].endswith(ep.audio_file.name)
-                ][0]
+                episode = [ep for ep in episodes if ep.audio_file and row["ObjectKey"].endswith(ep.audio_file.name)][0]
             except IndexError:
                 continue
 

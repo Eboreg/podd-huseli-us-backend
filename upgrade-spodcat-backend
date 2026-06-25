@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
 uv lock --upgrade-package spodcat-backend --no-cache
+uv sync
 git add .
 git commit -m "Upgraded spodcat-backend"

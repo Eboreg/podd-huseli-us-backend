@@ -11,7 +11,7 @@ license = {text = "GPL-3.0-or-later"}
 name = "podd-backend"
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
-version = "0.5.0"
+version = "0.6.0"
 dependencies = [
     "azure-identity",
     "azure-monitor-query",
@@ -104,7 +104,7 @@ module = ["*.migrations.*"]
 [tool.ruff]
 line-length = 120
 target-version = "py312"
-exclude = [".venv", ".git", ".mypy_cache", "__pycache__", "build", "node_modules", "scratch.py"]
+exclude = [".venv", ".git", ".mypy_cache", "__pycache__", "build", "node_modules", "scratch.py", "**/migrations"]
 show-fixes = true
 
 [tool.ruff.lint]
