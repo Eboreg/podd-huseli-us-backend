@@ -2518,8 +2518,8 @@ wheels = [
 
 [[package]]
 name = "spodcat-backend"
-version = "2.3.0"
-source = { git = "https://github.com/Eboreg/spodcat-backend.git?branch=v2#73dd9a91ce6f2ad75d30847c0d9bba47da0a97b2" }
+version = "2.3.1"
+source = { git = "https://github.com/Eboreg/spodcat-backend.git?branch=v2#0483ccca400fb01726ca7d9752f36d43b865fdbe" }
 dependencies = [
     { name = "audioop-lts", marker = "python_full_version >= '3.13'" },
     { name = "country-list" },
