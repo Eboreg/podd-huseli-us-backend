@@ -1,6 +1,6 @@
 [build-system]
-requires = ["uv_build>=0.9.7"]
 build-backend = "uv_build"
+requires = ["uv_build>=0.9.7,<1.0.0"]
 
 [project]
 authors = [
@@ -11,7 +11,7 @@ license = {text = "GPL-3.0-or-later"}
 name = "podd-backend"
 readme = "README.md"
 requires-python = ">=3.11,<4.0"
-version = "0.6.4"
+version = "0.6.5"
 dependencies = [
     "azure-identity",
     "azure-monitor-query",
@@ -32,12 +32,9 @@ dependencies = [
 [dependency-groups]
 dev = [
     "django-debug-toolbar",
-    "flake8",
     "ipdb",
     "ipython",
-    "isort",
-    "pylint",
-    "pylint-django",
+    "ruff",
     "spodcat-backend",
     "werkzeug>=3.1.8",
 ]
@@ -51,70 +48,24 @@ exclude-newer = "P7D"
 [tool.uv.sources]
 spodcat-backend = { git = "https://github.com/Eboreg/spodcat-backend.git", branch = "v2" }
 
-[tool.pylint.main]
-disable = [
-    "broad-exception-caught",
-    "import-outside-toplevel",
-    "invalid-name",
-    "invalid-str-returned",
-    "missing-class-docstring",
-    "missing-function-docstring",
-    "missing-module-docstring",
-    "too-few-public-methods",
-    "too-many-ancestors",
-    "too-many-arguments",
-    "too-many-branches",
-    "too-many-instance-attributes",
-    "too-many-locals",
-    "too-many-positional-arguments",
-    "too-many-return-statements",
-    "too-many-statements",
-]
-ignore = [".venv", "node_modules"]
-ignore-patterns = ["^\\.#", ".*\\.pyi", "apps\\.py"]
-max-line-length = 119
-
-[tool.isort]
-combine_as_imports = true
-default_section = "THIRDPARTY"
-include_trailing_comma = true
-line_length = 79
-lines_after_imports = 2
-multi_line_output = 3
-sections = [
-    "FUTURE",
-    "STDLIB",
-    "THIRDPARTY",
-    "FIRSTPARTY",
-    "LOCALFOLDER",
-]
-skip = [".venv", "node_modules"]
-
-[tool.mypy]
-check_untyped_defs = true
-files = "."
-follow_imports = "skip"
-ignore_missing_imports = true
-show_error_codes = true
-
-[[tool.mypy.overrides]]
-ignore_errors = true
-module = ["*.migrations.*"]
-
 [tool.ruff]
-line-length = 120
-target-version = "py312"
 exclude = [".venv", ".git", ".mypy_cache", "__pycache__", "build", "node_modules", "scratch.py", "**/migrations"]
+line-length = 120
 show-fixes = true
+target-version = "py312"
+
+[tool.ruff.format]
+docstring-code-line-length = 80
+quote-style = "double"
 
 [tool.ruff.lint]
-select = ["E", "F", "W", "B", "I"]
 ignore = ["E722", "B027"]
+select = ["E", "F", "W", "B", "I"]
 
 [tool.ruff.lint.isort]
-lines-after-imports = 2
 combine-as-imports = true
 default-section = "third-party"
+lines-after-imports = 2
 section-order = [
     "future",
     "standard-library",
@@ -122,7 +73,3 @@ section-order = [
     "first-party",
     "local-folder",
 ]
-
-[tool.ruff.format]
-quote-style = "double"
-docstring-code-line-length = 80

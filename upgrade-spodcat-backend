@@ -2,5 +2,7 @@
 
 uv lock --upgrade-package spodcat-backend --no-cache
 uv sync
-git add .
-git commit -m "Upgraded spodcat-backend"
+if [ "$1" == "--git" ]; then
+    git add .
+    git commit -m "Upgraded spodcat-backend"
+fi

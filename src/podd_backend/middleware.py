@@ -21,7 +21,6 @@ class LocaleMiddleware:
 
         return response
 
-    # pylint: disable=unused-argument
     def process_view(self, request: HttpRequest, *args, **kwargs):
         if request.resolver_match and request.resolver_match.app_name == "admin":
             if isinstance(request.user, User) and request.user.language:
