@@ -1765,7 +1765,7 @@ wheels = [
 
 [[package]]
 name = "podd-backend"
-version = "0.7.0"
+version = "0.8.0"
 source = { editable = "." }
 dependencies = [
     { name = "azure-identity" },
@@ -2418,8 +2418,8 @@ wheels = [
 
 [[package]]
 name = "spodcat-backend"
-version = "2.4.0"
-source = { git = "https://github.com/Eboreg/spodcat-backend.git?branch=v2#0fdf457758baa969845d8f039c19bf7a67c14906" }
+version = "2.5.0"
+source = { git = "https://github.com/Eboreg/spodcat-backend.git?branch=v2#4c68678133f78ce5ef9bf808fdee80001229b638" }
 dependencies = [
     { name = "audioop-lts", marker = "python_full_version >= '3.13'" },
     { name = "country-list" },
