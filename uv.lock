@@ -1765,7 +1765,7 @@ wheels = [
 
 [[package]]
 name = "podd-backend"
-version = "0.10.0"
+version = "0.10.1"
 source = { editable = "." }
 dependencies = [
     { name = "azure-identity" },

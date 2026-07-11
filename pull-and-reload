@@ -8,4 +8,5 @@ uv sync
 m migrate
 m collectstatic --noinput --clear
 # m invalidate_cachalot
-sudo systemctl restart emperor.uwsgi.service
+# sudo systemctl restart emperor.uwsgi.service
+touch uwsgi.ini
