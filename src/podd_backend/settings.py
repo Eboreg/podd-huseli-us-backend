@@ -210,13 +210,13 @@ LOGGING = {
 
 # django-cors-headers
 CORS_ALLOWED_ORIGINS = [
-    "http://localhost:8000",
     "http://127.0.0.1:8000",
+    "http://jacob:3000",
+    "http://jacob:8000",
+    "http://localhost:3000",
+    "http://localhost:8000",
     "https://backend.podd.huseli.us",
     "https://podd.huseli.us",
-    "https://backend.testpodd.huseli.us",
-    "https://testpodd.huseli.us",
-    "http://jacob:4200",
 ]
 
 
