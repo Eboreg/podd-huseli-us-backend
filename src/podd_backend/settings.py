@@ -3,6 +3,7 @@ from pathlib import Path
 
 from django.http import HttpRequest
 from django.utils.translation import gettext_lazy as _
+from spodcat.types import SpodcatSettingsDict
 from spodcat.utils import env_boolean
 
 
@@ -220,27 +221,6 @@ CORS_ALLOWED_ORIGINS = [
 ]
 
 
-# Caching
-CACHALOT_ENABLED = env_boolean("CACHALOT_ENABLED", True)
-
-if CACHALOT_ENABLED:
-    redis_db = os.environ.get("REDIS_DB", "0")
-
-    INSTALLED_APPS.append("cachalot")
-
-    CACHES = {
-        "default": {
-            "BACKEND": "django_redis.cache.RedisCache",
-            "LOCATION": f"redis://127.0.0.1:6379/{redis_db}",
-            "OPTIONS": {
-                "CLIENT_CLASS": "django_redis.client.DefaultClient",
-            },
-        },
-    }
-    CACHALOT_DATABASES = ["default"]
-    CACHALOT_UNCACHABLE_APPS = ["spodcat.logs"]
-
-
 # django-debug-toolbar
 def show_toolbar(request: HttpRequest):
     from django.conf import settings
@@ -270,10 +250,6 @@ DEBUG_TOOLBAR_PANELS = [
     "debug_toolbar.panels.profiling.ProfilingPanel",
 ]
 
-if CACHALOT_ENABLED:
-    DEBUG_TOOLBAR_PANELS.append("cachalot.panels.CachalotPanel")
-
-
 # martor
 MARTOR_ENABLE_LABEL = True
 
@@ -285,7 +261,7 @@ REST_FRAMEWORK = {
 }
 
 
-SPODCAT = {
+SPODCAT: SpodcatSettingsDict = {
     "FRONTEND_ROOT_URL": os.environ.get("FRONTEND_ROOT_URL"),
     "BACKEND_HOST": os.environ.get("BACKEND_HOST"),
     "FILEFIELDS": {
