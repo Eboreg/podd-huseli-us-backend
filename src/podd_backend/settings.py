@@ -27,7 +27,6 @@ INSTALLED_APPS = [
     "django.contrib.staticfiles",  # needed for admin and REST browsable API
     "django_extensions",
     "rest_framework",  # needed for REST browsable API
-    "rest_framework_json_api",  # needed for REST browsable API
     "corsheaders",
     "django_filters",  # needed for REST browsable API
     "martor",  # needed for Episode, Podcast & Post admin
@@ -252,13 +251,6 @@ DEBUG_TOOLBAR_PANELS = [
 
 # martor
 MARTOR_ENABLE_LABEL = True
-
-
-# Django REST Framework
-REST_FRAMEWORK = {
-    "TEST_REQUEST_RENDERER_CLASSES": ("rest_framework_json_api.renderers.JSONRenderer",),
-    "TEST_REQUEST_DEFAULT_FORMAT": "vnd.api+json",
-}
 
 
 SPODCAT: SpodcatSettingsDict = {
