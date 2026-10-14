@@ -1637,7 +1637,7 @@ wheels = [
 
 [[package]]
 name = "podd-backend"
-version = "0.14.0"
+version = "0.14.1"
 source = { editable = "." }
 dependencies = [
     { name = "azure-identity" },
@@ -2217,8 +2217,8 @@ wheels = [
 
 [[package]]
 name = "spodcat-backend"
-version = "2.12.2"
-source = { git = "https://github.com/Eboreg/spodcat-backend.git?branch=v2#e262c713cebc44e16fec6dc6cb4433ae51056c8e" }
+version = "2.12.3"
+source = { git = "https://github.com/Eboreg/spodcat-backend.git?branch=v2#6bcca099a3b1581f9b5af82053c448ab7102448c" }
 dependencies = [
     { name = "country-list" },
     { name = "django" },
