@@ -11,7 +11,7 @@ license = {text = "GPL-3.0-or-later"}
 name = "podd-backend"
 readme = "README.md"
 requires-python = ">=3.12,<4.0"
-version = "0.14.2"
+version = "0.14.3"
 dependencies = [
     "azure-identity",
     "azure-monitor-query",
@@ -19,6 +19,7 @@ dependencies = [
     "django-cors-headers",
     "django-extensions",
     "django-storages[azure]",
+    "dotenv>=0.9.9",
     "psycopg[binary]",
     "python-dotenv",
     "spodcat-backend",
