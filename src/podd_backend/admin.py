@@ -4,14 +4,14 @@ from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin as DjangoUserAdmin
 from django.db.models import Q, QuerySet
 from django.utils.translation import gettext_lazy as _
-from spodcat.contrib.admin.mixin import AdminMixin, StaticRSSMixin
+from spodcat.contrib.admin.options import SpodcatStaticRSSModelAdmin
 from spodcat.models import Podcast
 
 from podd_backend.models import User
 
 
 @admin.register(User)
-class UserAdmin(AdminMixin, StaticRSSMixin[User], DjangoUserAdmin):  # type: ignore
+class UserAdmin(SpodcatStaticRSSModelAdmin[User], DjangoUserAdmin): # type: ignore
     fieldsets = (
         (None, {"fields": ("username", "password")}),
         (_("Personal info"), {"fields": ("first_name", "last_name", "email", "language")}),
