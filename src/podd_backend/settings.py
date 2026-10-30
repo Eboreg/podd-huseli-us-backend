@@ -254,10 +254,11 @@ MARTOR_ENABLE_LABEL = True
 
 
 SPODCAT: SpodcatSettingsDict = {
-    "FRONTEND_ROOT_URL": os.environ.get("FRONTEND_ROOT_URL"),
     "BACKEND_HOST": os.environ.get("BACKEND_HOST"),
+    "CACHE_RSS_XML": ("memory", "file"),
     "FILEFIELDS": {
         "FONTFACE_FILE": {"STORAGE": "local"},
         "RSS_XML": {"STORAGE": "local"},
     },
+    "FRONTEND_ROOT_URL": os.environ.get("FRONTEND_ROOT_URL"),
 }
